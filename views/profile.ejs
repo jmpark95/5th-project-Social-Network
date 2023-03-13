@@ -1,0 +1,44 @@
+<%- include('partials/head'); -%>
+
+   <body>
+      <%- include('partials/navbar'); -%>
+
+
+
+      <main class="text-center">
+         <h3 style="text-align: left;">Profile page</h3>
+
+         <div class="profile-posts">
+            <h3 style="margin-bottom:20px">Your posts</h3>
+            <div class="profile-post-wrapper">
+               <% posts.forEach(element => { %>
+                  <a style="align-self: center;" href="/post/<%= element._id %>"><img src= "<%= element.image %>"  alt="post-image" height="150" width="150"></a>
+               <% }) %>
+            </div>
+         </div>
+
+         <form class="profile-form" action="/profile/createpost" enctype="multipart/form-data" method="POST">
+            <h3>Add a post</h3>
+            <div class="form-label">
+               <label for="caption">Caption</label>
+               <input type="text" name="caption">
+            </div>
+
+            <div class="form-label">
+               <label for="image">Image</label>
+               <input
+                  type="file"
+                  id="image"
+                  name="file"
+               />
+            </div>
+
+            <button type="submit" class="btn">Upload</button>
+         </form>
+
+         <h4>
+            <a class='btn' href="/feed">Go to feed</a>
+         </h4>
+      </main>
+   </body>
+</html>

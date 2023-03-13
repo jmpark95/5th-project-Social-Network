@@ -1,0 +1,73 @@
+<%- include('partials/head'); -%>
+
+   <body>
+      <div class="container-center text-center">
+         <h1 class="form-title">Signup</h1>
+
+         <form>
+            <div class="form-label">
+               <label for="email">Email</label>
+               <input
+                  type="email"
+                  name="email"
+                  placeholder="Enter email"
+               />
+            </div>
+            <div class="email-error"></div>
+
+            <div class="form-label">
+               <label for="username">Username</label>
+               <input
+                  type="text"
+                  name="username"
+                  placeholder="Enter username"
+               />
+            </div>
+            <div class="username-error"></div>
+
+            <div class="form-label">
+               <label for="password">Password</label>
+               <input
+                  type="password"
+                  name="password"
+                  placeholder="Enter password"
+               />
+            </div>
+            <div class="password-error"></div>
+
+            <button class="btn">Signup</button>
+         </form>
+      </div>
+
+      <script>
+         const form = document.querySelector("form");
+         const emailError = document.querySelector(".email-error");
+         const usernameError = document.querySelector(".username-error");
+         const passwordError = document.querySelector(".password-error");
+
+         form.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const email = form.email.value;
+            const username = form.username.value;
+            const password = form.password.value;
+
+            const res = await fetch("/signup", {
+               method: "POST",
+               headers: { "Content-Type": "application/json" },
+               body: JSON.stringify({ email, username, password }),
+            });
+
+            const data = await res.json();
+
+            if (data.user) {
+               location.assign(`/profile/${data.user}`);
+            }
+            if (data.errorObject) {
+               emailError.textContent = data.errorObject.email;
+               usernameError.textContent = data.errorObject.username;
+               passwordError.textContent = data.errorObject.password;
+            }
+         });
+      </script>
+   </body>
+</html>

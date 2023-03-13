@@ -1,0 +1,19 @@
+<%- include('partials/head'); -%>
+
+    <body>
+        <%- include('partials/navbar'); -%>
+
+        <main class="text-center">
+            <h3 style="text-align: left;">Your feed</h3>
+
+            <div class="posts">
+                <% allPosts.forEach(element => { %>
+                    <a style="align-self:center" href="/post/<%= element._id %>"><img src="<%= element.image %>"  alt="post-image" height="200" width="200"></a>
+                <% }) %>
+            </div>
+         </main>
+    </body>
+</html>
+
+
+
