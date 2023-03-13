@@ -3,6 +3,7 @@ const express = require("express")
 const app = express()
 const mongoose = require('mongoose')
 const cookieParser = require('cookie-parser')
+const PORT = 3000
 
 const rootRouter = require('./routes/root')
 const profileRouter = require('./routes/profile')
@@ -11,8 +12,8 @@ const postRouter = require('./routes/post')
 mongoose.connect(process.env.MONGO_URI)
     .then(() => {
         console.log("Connected to database")
-        app.listen(3000)
-        console.log(`App listening on port 3000`)
+        app.listen(process.env.PORT || PORT)
+        console.log(`App listening on port ${PORT}`)
     })
     .catch(err => console.log(err));
 
