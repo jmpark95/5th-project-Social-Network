@@ -88,6 +88,16 @@ form {
 
 button {
    cursor: pointer;
+   background: none;
+   border: none;
+}
+
+#like-btn:hover i {
+   color: red;
+}
+
+#delete-btn:hover i {
+   color: blue;
 }
 
 header {
@@ -183,6 +193,7 @@ main {
 .like-wrapper {
    display: flex;
    justify-content: space-between;
+   align-items: center;
    margin-bottom: 10px;
 }
 

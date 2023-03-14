@@ -8,10 +8,11 @@ module.exports.profile_get = async (req, res) => {
         const decodedUser = jwt.verify(req.cookies.token, process.env.JWT_SECRET)
 
         if (decodedUser.id === req.params.id) {
-            const user = await User.findById(req.params.id)
-            const posts = await Post.find({ author: user._id })
+            const loggedInUser = await User.findById(req.params.id)
 
-            res.render('profile.ejs', { user, posts })
+            const posts = await Post.find({ author: loggedInUser._id })
+
+            res.render('profile.ejs', { loggedInUserId: loggedInUser._id, loggedInUser: loggedInUser.username, posts })
         } else {
             res.status(403).redirect('/')
         }

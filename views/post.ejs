@@ -4,25 +4,48 @@
     <%- include('partials/navbar'); -%>
 
     <main class="text-center">
-        <h3 style="text-align: left;" >Posted by: <%= author %></h3>
+        <h3 style="text-align: left;" >Posted by: <%= authorName %></h3>
         <div class="post-wrapper">
             <img src="<%= image %>" alt="image-post" width="250" height="250">
             <div class="like-wrapper">
-                <div>
-                    <i style="margin-right: 5px" class="fa fa-heart-o" aria-hidden="true"></i>
+                <div >
+                    <button id="like-btn" style="margin-right: 8px"><i class="fa fa-heart-o fa-2x" aria-hidden="true"></i></button>
                     <span> <%= likes %> likes</span>
                 </div>
 
-                <i class="fa fa-trash-o" aria-hidden="true"></i>
+                <%if(loggedInUser === authorName) { %>
+                    <button id="delete-btn"><i class="fa fa-trash-o fa-2x" aria-hidden="true"></i></button>
+                <%}%>
             </div>
             <p><%= caption %></p>
         </div>
-
-
-
     </main>
 
+    <script>
+        const likeBtn = document.getElementById('like-btn')
+        const deleteBtn = document.getElementById('delete-btn')
+
+        likeBtn.addEventListener('click', async () => {
+            await fetch(`${window.location.pathname}`, {
+                method: "PUT",
+            })
+            location.reload()
+        })
+
+        deleteBtn.addEventListener('click', async (e) => {
+            if (confirm("Are you sure you want to delete this post?")) {
+                const res = await fetch(`${window.location.pathname}`, {
+                method: "DELETE",
+            })
+
+            const profileURL = await res.json()
+
+            location.assign(`/profile/${profileURL}`)
+            }
+            return
 
 
+        })
+    </script>
 </body>
 </html>

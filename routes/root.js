@@ -16,9 +16,9 @@ router.post('/signup', authController.signup_post)
 
 router.get('/feed', requireAuth, async (req, res) => {
     const decodedUser = jwt.verify(req.cookies.token, process.env.JWT_SECRET)
-    const user = await User.findById(decodedUser.id)
+    const loggedInUser = await User.findById(decodedUser.id)
     const allPosts = await Post.find({})
-    res.render('feed.ejs', { allPosts, user })
+    res.render('feed.ejs', { allPosts, loggedInUser: loggedInUser.username, loggedInUserId: loggedInUser._id })
 })
 
 router.get('/logout', (req, res) => {
