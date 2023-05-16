@@ -39,5 +39,3 @@ Currently, there are 4 "users" each with a few posts. Feel free to login to any 
 
 -  email: test4@test.com <br />
    password: testtest123!@#
-
-(Please excuse the poor styling, as the focus of this project was server-side coding)
