@@ -1,6 +1,6 @@
 # Social Networking App "BaceFook"
 
-My previous project revealed some rather shaky fundamentals in server-side programming. So for this project I decided to drop React for a bit and just focus on the backend. Focusing purely on the MVC architecture really cleared things up in areas of: file/folder structure, routing, basic form validation, authentication and cookies. I know theres much more to learn, but I feel like now I'm not as lost as I was in my previous movie app.
+Previous project revealed some rather shaky fundamentals in server-side programming. So for this project I decided to drop React for a bit and just focus on the backend. Focusing purely on the MVC architecture really cleared things up in areas of: file/folder structure, routing, basic form validation, authentication and cookies. I know theres much more to learn, but I feel like now I'm not as lost as I was in my previous movie app.
 
 ---
 
@@ -26,7 +26,7 @@ Users are able to:
 
 ---
 
-Currently, there are 4 "users" each with a few posts. Feel free to login to any of them, or create your own account and play around with the app!
+Currently, there are 4 "users" each with a few posts.
 
 -  email: test1@test.com <br />
    password: testtest123!@#
